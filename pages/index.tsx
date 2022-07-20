@@ -4,7 +4,7 @@ import type { NextPage } from 'next'
 import { useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import {NFTCard} from "./nftCard"
+import {NFTCard} from "./nftCard.page"
 // import dotenv
 
 
