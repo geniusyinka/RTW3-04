@@ -2,8 +2,8 @@ export const NFTCard = ({ nft }) => {
 
     return (
         <div className="w-1/4 flex flex-col ">
-        <div className="rounded-md">
-            <img className="object-cover h-128 w-full rounded-t-md" src={nft.media[0].gateway} ></img>
+        <div className="rounded-md w-52">
+            <img className=" h-6" style={{height: '200px'}} src={nft.media[0].gateway} ></img>
         </div>
         <div className="flex flex-col y-gap-2 px-2 py-3 bg-slate-100 rounded-b-md h-110 ">
             <div className="flex-grow">
