@@ -1,6 +1,6 @@
 # Road To Web3 Lesson 4 repo
 
-This repo contains both the smart contract and the frontend of the fourth lesson of the Alchemy Road To Web3 course. 
+This repo contains both the smart contract and the frontend of the fourth lesson of the Alchemy Road To Web3 course. NFT Gallery
 
 setting things up is quite easy.
 

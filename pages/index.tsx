@@ -1,16 +1,38 @@
 
-
 import type { NextPage } from 'next'
 import { useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import {NFTCard} from "../component/nftCard"
+// import {NFTCard} from "../component/nftCard"
 // import dotenv
 
 
+export const NFTCard = ({ nft }) => {
+
+  return (
+      <div className="w-1/4 flex flex-col ">
+      <div className="rounded-md">
+          <img className=" object-cover h-128 w-full rounded-md"  src={nft.media[0].gateway} ></img>
+      </div>
+      <div className="flex flex-col y-gap-2 w-full px-2 py-3 bg-slate-100 rounded-b-md h-110 ">
+          <div className="flex-grow">
+              <h2 className="text-xl text-gray-800">{nft.title}</h2>
+              <p className="text-gray-600 text-ellipsis w-44 overflow-hidden">Id: {nft.id.tokenId}</p>
+              <p className="text-gray-600 text-ellipsis w-44 overflow-hidden" >{nft.contract.address}</p>
+          </div>
+
+          <div className="flex-grow mt-2">
+              <p className="text-gray-600 h-24 overflow-hidden text-ellipsis ">{nft.description}</p>
+          </div>
+      </div>
+
+  </div>
+  )
+}
+
 const Home = () => {
 
-  const [wallet, setWalletAddress] = useState("")
+  const [wallet, setWalletAddress] = useState("geniusyinka.eth")
   const [collection, setCollectionAddress] = useState("")
   const [NFTs, setNFTs] = useState([])
   const [fetchforCollection, setFetchForCollection] = useState(false)
@@ -18,7 +40,7 @@ const Home = () => {
   const fetchNFTs = async () => {
     let nfts;
     console.log("fetching NFTs");
-    const api_key = process.env.API_KEYS
+    const api_key = 'kkkMDXtLRZoxO72ouuuQbdKBwyq-y0Es'
     const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${api_key}/getNFTs/`;
     var requestOptions = {
       method: 'GET'
