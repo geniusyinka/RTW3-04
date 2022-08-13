@@ -11,23 +11,23 @@ import Image from 'next/image'
 export const NFTCard = ({ nft }) => {
 
   return (
-      <div className="w-1/4 flex flex-col ">
+    <div className="nft-card w-1/4 flex flex-col ">
       <div className="rounded-md">
-          <img className=" object-cover h-128 w-full rounded-md"  src={nft.media[0].gateway} ></img>
+        <img className=" object-cover h-128 w-full rounded-md" src={nft.media[0].gateway} ></img>
       </div>
       <div className="flex flex-col y-gap-2 w-full px-2 py-3 bg-slate-100 rounded-b-md h-110 ">
-          <div className="flex-grow">
-              <h2 className="text-xl text-gray-800">{nft.title}</h2>
-              <p className="text-gray-600 text-ellipsis w-44 overflow-hidden">Id: {nft.id.tokenId}</p>
-              <p className="text-gray-600 text-ellipsis w-44 overflow-hidden" >{nft.contract.address}</p>
-          </div>
+        <div className="flex-grow">
+          <h2 className="text-xl text-gray-800">{nft.title}</h2>
+          <p className="text-gray-600 text-ellipsis w-44 overflow-hidden">Id: {nft.id.tokenId}</p>
+          <p className="text-gray-600 text-ellipsis w-44 overflow-hidden" >{nft.contract.address}</p>
+        </div>
 
-          <div className="flex-grow mt-2">
-              <p className="text-gray-600 h-24 overflow-hidden text-ellipsis ">{nft.description}</p>
-          </div>
+        <div className="flex-grow mt-2">
+          <p className="text-gray-600 h-24 overflow-hidden text-ellipsis ">{nft.description}</p>
+        </div>
       </div>
 
-  </div>
+    </div>
   )
 }
 
@@ -80,24 +80,26 @@ const Home = () => {
 
   return (
     <div className="flex flex-col items-center justify-center py-8 gap-y-3">
-      <div className="flex flex-col w-full justify-center items-center gap-y-2">
-        <input 
-        className=' bg-slate-100 w-1/4 p-3 rounded-md'
-        onChange={(e) => { setWalletAddress(e.target.value) }} value={wallet} type={"text"} placeholder="Add your wallet address"></input>
-        <input
-        className='bg-slate-100 w-1/4 p-3 rounded-sm'
-         onChange={(e) => { setCollectionAddress(e.target.value) }} value={collection} type={"text"} placeholder="Add the collection address"></input>
-        <label className="text-gray-600 "><input onChange={(e) => { setFetchForCollection(e.target.checked) }} type={"checkbox"} className="mr-2"></input>Fetch for collection</label>
-        <button className=" text-white bg-blue-700 px-4 py-2 mt-3 rounded-md w-1/5 hover:bg-sky-700"
-          onClick={
-            () => {
-              if (fetchforCollection) {
-                fetchNFTsForCollection()
-              } else (fetchNFTs())
-            }
-          }
-        >Let's go! </button>
-      </div>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        if (fetchforCollection) {
+          fetchNFTsForCollection()
+        } else (fetchNFTs())
+      }}>
+
+        <div className="flex flex-col w-full justify-center items-center gap-y-2">
+          <input
+            className=' bg-slate-100 p-3 rounded-md'
+            onChange={(e) => { setWalletAddress(e.target.value) }} value={wallet} type={"text"} placeholder="Add your wallet address"></input>
+          <input
+            className='bg-slate-100 p-3 rounded-sm'
+            onChange={(e) => { setCollectionAddress(e.target.value) }} value={collection} type={"text"} placeholder="Add the collection address"></input>
+          <label className="text-gray-600 "><input onChange={(e) => { setFetchForCollection(e.target.checked) }} type={"checkbox"} className="mr-2"></input>Fetch for collection</label>
+          <button className=" text-white bg-blue-700 px-4 py-2 mt-3 rounded-md hover:bg-sky-700"
+          type='submit'
+          >Let's go! </button>
+        </div>
+      </form>
       <div className='flex flex-wrap gap-y-12 mt-4 w-5/6 gap-x-2 justify-center'>
         {
           NFTs.length && NFTs.map(nft => {
