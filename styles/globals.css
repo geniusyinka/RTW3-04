@@ -4,8 +4,9 @@
 
 
 
-@media (min-width: 350px) { 
+@media (max-width: 600px) { 
     .nft-card {
         width: auto;
+        padding: 3rem;
     }
    }
